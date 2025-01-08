@@ -12,7 +12,7 @@ $config = array(
     "username"         => "apitest",
     "TransactionType"  => "CustomerPayBillOnline",
     "passkey"          => "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919", //Enter your passkey here
-    "CallBackURL"      => "https://f899-41-90-64-220.ngrok.io/mpesa/callback.php", //When using Localhost, Use Ngrok to forward the response to your Localhost
+    "CallBackURL"      => "https://174.138.68.225/mpesa/callback.php",
     "AccountReference" => "Smurf",
     "TransactionDesc"  => "Bronze" ,
 );
@@ -94,7 +94,7 @@ if (isset($_POST['phone_number'])) {
         $MerchantRequestID = $result['MerchantRequestID'];
         $CheckoutRequestID = $result['CheckoutRequestID'];
 
-        $conn = mysqli_connect("localhost","root","","mpesa");
+        $conn = mysqli_connect("localhost","evstrjmuys","fxy7fQqTBR","evstrjmuys");
        
         $sql = "INSERT INTO `orders`(`ID`, `OrderNo`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`) VALUES ('','".$orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."');";
         

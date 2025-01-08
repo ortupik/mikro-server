@@ -2,16 +2,13 @@
 RewriteEngine On
 
 # Redirect to HTTPS
-RewriteCond %{HTTPS} !=on
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Set the default index file
 DirectoryIndex index.php
 
-# Route all requests to index.php (useful for frameworks like Laravel, CodeIgniter)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [L]
+
 
 # Prevent directory listing
 Options -Indexes
