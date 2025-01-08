@@ -12,7 +12,7 @@ $config = array(
     "username"         => "apitest",
     "TransactionType"  => "CustomerPayBillOnline",
     "passkey"          => "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919", //Enter your passkey here
-    "CallBackURL"      => "https://174.138.68.225/mpesa/callback_test.php",
+    "CallBackURL"      => "https://174.138.68.225/mpesa/callback.php",
     "AccountReference" => "Smurf",
     "TransactionDesc"  => "Bronze" ,
 );

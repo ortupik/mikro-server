@@ -1,1 +1,0 @@
-{"Result":{"ResultType":0,"ResultCode":8006,"ResultDesc":"The security credential is locked.","OriginatorConversationID":"8db8-42b1-b82f-13000588c9371165622","ConversationID":"AG_20250108_20105df900ddea4db647","TransactionID":"TA80000000","ReferenceData":{"ReferenceItem":{"Key":"Occasion","Value":"Transaction Status Query"}}}}

@@ -29,7 +29,7 @@ function generateRandomString($length = 7) {
     $initiatorName = "testapi";
     $initiatorPassword = "Safaricom999!*!";
     $results_url = "https://174.138.68.225/mpesa/callback_test.php"; //Endpoint to receive results Body
-    $timeout_url = "https://174.138.68.225/mikhmon/mpesa/callback_test.php"; //Endpoint to to go to on timeout
+    $timeout_url = "https://174.138.68.225/mpesa/callback_test.php"; //Endpoint to to go to on timeout
 /*End  configurations*/
 
 /*Ensure transaction code is entered*/
@@ -102,6 +102,8 @@ function generateRandomString($length = 7) {
         curl_close($ch2);
         
         $result = json_decode($response); 
+
+        var_dump($result);
             
         $verified = $result->{'ResponseCode'};
         if($verified === "0"){

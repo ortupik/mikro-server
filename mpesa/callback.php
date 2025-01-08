@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli("174.138.68.225", "evstrjmuys", "fxy7fQqTBR", "evstrjmuys");
+//$conn = new mysqli("174.138.68.225", "evstrjmuys", "fxy7fQqTBR", "evstrjmuys");
 //$conn = new mysqli("localhost", "root", "", "mpesa");
 
 if ($conn->connect_error) {
