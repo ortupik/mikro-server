@@ -84,9 +84,9 @@ if (isset($_POST['phone_number'])) {
 
     $result = json_decode(json_encode(json_decode($response)), true);
 
-    if(!preg_match('/^[0-9]{10}+$/', $phone) && array_key_exists('errorMessage', $result)){
+   /* if(!preg_match('/^[0-9]{10}+$/', $phone) && array_key_exists('errorMessage', $result)){
         $errors['phone'] = $result["errorMessage"];
-    }
+    }*/
 
     var_dump($result);
 
