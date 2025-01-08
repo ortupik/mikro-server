@@ -9,7 +9,7 @@ $iphost = "192.168.6.1";
 $userhost = "admin";
 $passwdhost = '12345678';
 
-$API->connect($iphost, $userhost, $passwdhost);
+//$API->connect($iphost, $userhost, $passwdhost);
 
 function generateRandomString($length = 7) {
     $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -22,14 +22,14 @@ function generateRandomString($length = 7) {
 
 /*Call function with these configurations*/
     $env="sandbox";
-    $shortcode = '600988'; 
+    $shortcode = '174379'; 
     $type = '4';
-    $key = "6ZTfjQGGySUWUxLnB4IUzmZy3AbD8Zkp"; //Put your key here
-    $secret = "E2fGPbNy9JzHC93N";  //Put your secret here
+    $key = "Ag3WMhXZnR0c19fPKV42VgpArCb9kdakGuc8vIdKC53w7SQP"; //Put your key here
+    $secret = "5NqBQGqGxecLEbMGCAaYVAfwK0LpB2UJFRbggxtb032jtQOp3z14roYtOcPreStY";  //Put your secret here
     $initiatorName = "testapi";
-    $initiatorPassword = "Safaricom978!";
-    $results_url = "https://mfc.ke/callback.php"; //Endpoint to receive results Body
-    $timeout_url = "https://mfc.ke/callback.php"; //Endpoint to to go to on timeout
+    $initiatorPassword = "Safaricom999!*!";
+    $results_url = "https://174.138.68.225/mpesa/callback_test.php"; //Endpoint to receive results Body
+    $timeout_url = "https://174.138.68.225/mikhmon/mpesa/callback_test.php"; //Endpoint to to go to on timeout
 /*End  configurations*/
 
 /*Ensure transaction code is entered*/
@@ -66,12 +66,14 @@ function generateRandomString($length = 7) {
         $publicKey = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . "certificates" . DIRECTORY_SEPARATOR . "SandboxCertificate.cer"); 
         $isvalid = openssl_public_encrypt($initiatorPassword, $encrypted, $publicKey, OPENSSL_PKCS1_PADDING); 
         $password = base64_encode($encrypted);
+        $SecurityCredential = "fFnAVzdRiGDBFHzY9p0J+vRqUsZ+fpkaCAw1LxpfbJjVGLO6avzF6slhI3u1TepXVhzK7U0j+fj5R3/pgvKmIwPIkCwR02LX84nEwxvVTpG04zKXMzgQKMCh5dwwIuJ4Lkid1EARZbFRDaPk9GLliKk5hsjJzGRtxRt2UNT1DdqWIjir5oLBnZSKbC/sbqaOORp7WnkMje6mBKW2e5vCSJnMVtmZKqR1sV2Ae3hxDW0ba7pkx/PxUTeKA0wejUzxpARrxHD/5w9pUNsGH/t7VMLFUzLyd7MtPSJAOedz7UWT0hP/zhBDjNSu2vzpw+3gNFwWr9fMMRoWyDX6zrr/VA==";
+
     
         //echo $token;
     
         $curl_post_data = array( 
             "Initiator" => $initiatorName, 
-            "SecurityCredential" => $password, 
+            "SecurityCredential" => $SecurityCredential, 
             "CommandID" => $command, 
             "TransactionID" => $transactionID, 
             "PartyA" => $shortcode, 
@@ -100,9 +102,7 @@ function generateRandomString($length = 7) {
         curl_close($ch2);
         
         $result = json_decode($response); 
-    
-       // var_dump($result);
-        
+            
         $verified = $result->{'ResponseCode'};
         if($verified === "0"){
             $msg .=  "Verification Request SUCCESSFUL! Redirecting...";
@@ -119,7 +119,7 @@ function generateRandomString($length = 7) {
             $usermode = "vc-";
 
     
-           $response = $API->comm("/ip/hotspot/user/add", array(
+          /* $response = $API->comm("/ip/hotspot/user/add", array(
             "server" => "$server",
             "name" => "$name",
             "password" => "$password",
@@ -132,9 +132,9 @@ function generateRandomString($length = 7) {
             $getuser = $API->comm("/ip/hotspot/user/print", array(
             "?name" => "$name",
             ));
-            $voucher = $getuser[0]['name'];
+            $voucher = $getuser[0]['name'];*/
 
-            echo "<script>window.location='http://smurf.co.ke/login?voucher=" . $voucher."'</script>";
+           // echo "<script>window.location='http://smurf.co.ke/login?voucher=" . $voucher."'</script>";
 
            // header('Location: http://free.wifi?voucher'.);
             exit;

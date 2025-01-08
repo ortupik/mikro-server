@@ -7,12 +7,12 @@ $errmsg  = '';
 $config = array(
     "env"              => "sandbox",
     "BusinessShortCode"=> "174379",
-    "key"              => "6ZTfjQGGySUWUxLnB4IUzmZy3AbD8Zkp", //Enter your consumer key here
-    "secret"           => "E2fGPbNy9JzHC93N", //Enter your consumer secret here
+    "key"              => "Ag3WMhXZnR0c19fPKV42VgpArCb9kdakGuc8vIdKC53w7SQP", //Enter your consumer key here
+    "secret"           => "5NqBQGqGxecLEbMGCAaYVAfwK0LpB2UJFRbggxtb032jtQOp3z14roYtOcPreStY", //Enter your consumer secret here
     "username"         => "apitest",
     "TransactionType"  => "CustomerPayBillOnline",
     "passkey"          => "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919", //Enter your passkey here
-    "CallBackURL"      => "https://174.138.68.225/mpesa/callback.php",
+    "CallBackURL"      => "https://174.138.68.225/mpesa/callback_test.php",
     "AccountReference" => "Smurf",
     "TransactionDesc"  => "Bronze" ,
 );
@@ -88,6 +88,8 @@ if (isset($_POST['phone_number'])) {
         $errors['phone'] = $result["errorMessage"];
     }
 
+    var_dump($result);
+
     if($result['ResponseCode'] === "0"){
         //STK Push request successful
         
@@ -95,6 +97,7 @@ if (isset($_POST['phone_number'])) {
         $CheckoutRequestID = $result['CheckoutRequestID'];
 
         $conn = mysqli_connect("174.138.68.225","evstrjmuys","fxy7fQqTBR","evstrjmuys");
+       // $conn = mysqli_connect("localhost","root","","mpesa");
        
         $sql = "INSERT INTO `orders`( `OrderNo`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`) VALUES ('".$orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."');";
         
@@ -106,13 +109,14 @@ if (isset($_POST['phone_number'])) {
 
             header('location: confirm-payment.php');
         }else{
-            $errors['database'] = "Unable to initiate your order: ".$conn->error;;  
+            $errors['database'] = "Unable to make payment!: ".$conn->error;;  
             foreach($errors as $error) {
                 $errmsg .= $error . '<br />';
             } 
         }
         
     }else{
+        $errors['message'] = $result['ResponseDescription'];
         $errors['mpesastk'] = $result['errorMessage'];
         foreach($errors as $error) {
             $errmsg .= $error . '<br />';

@@ -1,13 +1,19 @@
 <?php
 
 $conn = new mysqli("174.138.68.225", "evstrjmuys", "fxy7fQqTBR", "evstrjmuys");
+//$conn = new mysqli("localhost", "root", "", "mpesa");
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    //die("Connection failed: " . $conn->connect_error);
 }
 
 $content = file_get_contents('php://input');
+
 $res = json_decode($content, true);
+
+file_put_contents('mpesa_callback.log', print_r($res, true), FILE_APPEND);
+
+
 
 $ResultDesc = $res['Body']['stkCallback']['ResultDesc'];
 $ResultCode = $res['Body']['stkCallback']['ResultCode'];
