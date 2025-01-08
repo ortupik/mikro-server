@@ -63,7 +63,7 @@ function generateRandomString($length = 7) {
         
         $token = isset($result->{'access_token'}) ? $result->{'access_token'} : "N/A";
     
-        $publicKey = file_get_contents(__DIR__ . "\certificates\SandboxCertificate.cer"); 
+        $publicKey = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . "certificates" . DIRECTORY_SEPARATOR . "SandboxCertificate.cer"); 
         $isvalid = openssl_public_encrypt($initiatorPassword, $encrypted, $publicKey, OPENSSL_PKCS1_PADDING); 
         $password = base64_encode($encrypted);
     
