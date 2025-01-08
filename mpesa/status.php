@@ -1,15 +1,17 @@
 <?php
 
 include_once('../lib/routeros_api.class.php');
+include_once('../sms/sendSms.php');
 
 $API = new RouterosAPI();
 $API->debug = false;
 
-$iphost = "192.168.6.1";
+//$iphost = "192.168.6.1";
+$iphost = "id-12.hostddns.us:13575";
 $userhost = "admin";
 $passwdhost = '12345678';
 
-//$API->connect($iphost, $userhost, $passwdhost);
+$API->connect($iphost, $userhost, $passwdhost);
 
 function generateRandomString($length = 7) {
     $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -22,7 +24,7 @@ function generateRandomString($length = 7) {
 
 /*Call function with these configurations*/
     $env="sandbox";
-    $shortcode = '174379'; 
+    $shortcode = '600984'; 
     $type = '4';
     $key = "Ag3WMhXZnR0c19fPKV42VgpArCb9kdakGuc8vIdKC53w7SQP"; //Put your key here
     $secret = "5NqBQGqGxecLEbMGCAaYVAfwK0LpB2UJFRbggxtb032jtQOp3z14roYtOcPreStY";  //Put your secret here
@@ -66,14 +68,12 @@ function generateRandomString($length = 7) {
         $publicKey = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . "certificates" . DIRECTORY_SEPARATOR . "SandboxCertificate.cer"); 
         $isvalid = openssl_public_encrypt($initiatorPassword, $encrypted, $publicKey, OPENSSL_PKCS1_PADDING); 
         $password = base64_encode($encrypted);
-        $SecurityCredential = "fFnAVzdRiGDBFHzY9p0J+vRqUsZ+fpkaCAw1LxpfbJjVGLO6avzF6slhI3u1TepXVhzK7U0j+fj5R3/pgvKmIwPIkCwR02LX84nEwxvVTpG04zKXMzgQKMCh5dwwIuJ4Lkid1EARZbFRDaPk9GLliKk5hsjJzGRtxRt2UNT1DdqWIjir5oLBnZSKbC/sbqaOORp7WnkMje6mBKW2e5vCSJnMVtmZKqR1sV2Ae3hxDW0ba7pkx/PxUTeKA0wejUzxpARrxHD/5w9pUNsGH/t7VMLFUzLyd7MtPSJAOedz7UWT0hP/zhBDjNSu2vzpw+3gNFwWr9fMMRoWyDX6zrr/VA==";
-
     
         //echo $token;
     
         $curl_post_data = array( 
             "Initiator" => $initiatorName, 
-            "SecurityCredential" => $SecurityCredential, 
+            "SecurityCredential" => $password, 
             "CommandID" => $command, 
             "TransactionID" => $transactionID, 
             "PartyA" => $shortcode, 
@@ -102,8 +102,6 @@ function generateRandomString($length = 7) {
         curl_close($ch2);
         
         $result = json_decode($response); 
-
-        var_dump($result);
             
         $verified = $result->{'ResponseCode'};
         if($verified === "0"){
@@ -121,7 +119,7 @@ function generateRandomString($length = 7) {
             $usermode = "vc-";
 
     
-          /* $response = $API->comm("/ip/hotspot/user/add", array(
+           $response = $API->comm("/ip/hotspot/user/add", array(
             "server" => "$server",
             "name" => "$name",
             "password" => "$password",
@@ -131,15 +129,13 @@ function generateRandomString($length = 7) {
             "limit-bytes-total" => "$datalimit",
             "comment" => "$comment",
             ));
-            $getuser = $API->comm("/ip/hotspot/user/print", array(
-            "?name" => "$name",
-            ));
-            $voucher = $getuser[0]['name'];*/
+            
+            $voucher = $name;
+            
+            $message = 'Smurf Wifi: Congratulations! You have successfully subscribed to 1 hour internet plan. Your subscription code is '.$voucher;
+            sendSms('+254705130991', $message);
 
-           // echo "<script>window.location='http://smurf.co.ke/login?voucher=" . $voucher."'</script>";
-
-           // header('Location: http://free.wifi?voucher'.);
-            exit;
+            header('Location: http://smurf.co.ke/login?voucher=' . $voucher);
         }else{
            echo $msg .=  "Verification Request UNSUCCESSFUL! ";
         }

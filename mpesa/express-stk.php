@@ -84,11 +84,11 @@ if (isset($_POST['phone_number'])) {
 
     $result = json_decode(json_encode(json_decode($response)), true);
 
-   /* if(!preg_match('/^[0-9]{10}+$/', $phone) && array_key_exists('errorMessage', $result)){
+    if(!preg_match('/^[0-9]{10}+$/', $phone) && array_key_exists('errorMessage', $result)){
         $errors['phone'] = $result["errorMessage"];
-    }*/
+    }
 
-    var_dump($result);
+   // var_dump($result);
 
     if($result['ResponseCode'] === "0"){
         //STK Push request successful
@@ -96,8 +96,8 @@ if (isset($_POST['phone_number'])) {
         $MerchantRequestID = $result['MerchantRequestID'];
         $CheckoutRequestID = $result['CheckoutRequestID'];
 
-        $conn = mysqli_connect("174.138.68.225","evstrjmuys","fxy7fQqTBR","evstrjmuys");
-       // $conn = mysqli_connect("localhost","root","","mpesa");
+       // $conn = mysqli_connect("174.138.68.225","evstrjmuys","fxy7fQqTBR","evstrjmuys");
+        $conn = mysqli_connect("localhost","root","","mpesa");
        
         $sql = "INSERT INTO `orders`( `OrderNo`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`) VALUES ('".$orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."');";
         
