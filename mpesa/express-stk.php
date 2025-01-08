@@ -96,7 +96,7 @@ if (isset($_POST['phone_number'])) {
 
         $conn = mysqli_connect("174.138.68.225","evstrjmuys","fxy7fQqTBR","evstrjmuys");
        
-        $sql = "INSERT INTO `orders`( `OrderNo`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`) VALUES ($orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."');";
+        $sql = "INSERT INTO `orders`( `OrderNo`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`) VALUES ('".$orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."');";
         
         if ($conn->query($sql) === TRUE){
             $_SESSION["MerchantRequestID"] = $MerchantRequestID;
