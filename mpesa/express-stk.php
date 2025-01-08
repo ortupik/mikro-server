@@ -94,7 +94,7 @@ if (isset($_POST['phone_number'])) {
         $MerchantRequestID = $result['MerchantRequestID'];
         $CheckoutRequestID = $result['CheckoutRequestID'];
 
-        $conn = mysqli_connect("localhost","evstrjmuys","fxy7fQqTBR","evstrjmuys");
+        $conn = mysqli_connect("174.138.68.225","evstrjmuys","fxy7fQqTBR","evstrjmuys");
        
         $sql = "INSERT INTO `orders`(`ID`, `OrderNo`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`) VALUES ('','".$orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."');";
         
