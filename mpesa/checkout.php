@@ -4,24 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900');
 
+
         body {
-            background-color: #171A3D;
-            font-family: 'Lato', sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
-            color: #fff;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "segoe ui", Verdana, Roboto, "helvetica neue", Arial, sans-serif, "apple color emoji";
+            
         }
 
         .container {
             display: flex;
-            align-items: center;
-            justify-content: center;
             height: 100vh;
             flex-direction: column;
-            padding: 0 20px;
+            padding:  20px;
+            max-width: 560px;
+            margin: 0% auto;
+            height: 100vh;
         }
 
         .header h1 {
@@ -29,13 +33,12 @@
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 20px;
-            color: #18C2C0;
+            color: black;
         }
 
         .price h1 {
-            font-weight: 300;
-            color: #18C2C0;
-            letter-spacing: 2px;
+            font-weight: bold;
+            color: black;
             text-align: center;
             margin-bottom: 30px;
         }
@@ -50,13 +53,12 @@
         .order-item {
             display: flex;
             align-items: center;
-            background-color: #242852;
+            background-color: #292C58;
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             margin-bottom: 15px;
-            width: 100%;
-            max-width: 520px;
+            width: 90%;
         }
 
         .order-item-image {
@@ -79,19 +81,17 @@
 
         .order-item-details div {
             font-size: 0.9rem;
-            color: #8F92C3;
+            color: #fff;
         }
 
         .order-item-price {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #18C2C0;
+            color: #18C2C0 ;
         }
 
         .card {
-            width: 100%;
-            max-width: 560px;
-            background: #242852;
+            background: #f2f2f2;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -101,6 +101,7 @@
         .card .row {
             padding: 1.2rem;
             border-bottom: 1.2px solid #292C58;
+            color: black;
         }
 
         .card .row.number {
@@ -109,25 +110,24 @@
 
         .info label {
             font-size: 0.9rem;
-            color: #8F92C3;
+            color: #fff;
             display: block;
             margin-bottom: 8px;
         }
 
         .info input {
-            width: 100%;
-            padding: 0.7rem;
-            background-color: #1D2146;
+            width: 90%;
+            padding: 1rem;
             border: none;
             border-radius: 5px;
-            font-family: 'Source Code Pro', monospace;
-            color: white;
             outline: none;
+            font-size: 16px;
         }
 
         .info input::placeholder {
             color: #666;
-            font-style: italic;
+            font-style: bold;
+           
         }
 
         .button button {
@@ -153,10 +153,9 @@
         }
 
         p {
-            color: #8F92C3;
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.9rem;
+            color: #000;
+            padding: 5px 15px;
+            font-size: 1rem;
         }
 
         p a {
@@ -172,19 +171,19 @@
 <body>
     <div class="container">
        
-       <form action='<?php echo $_SERVER['PHP_SELF'] ?>' method='POST'>
+       <form name="checkout" action='<?php echo $_SERVER['PHP_SELF'] ?>' method='POST'>
             <div class="price">
-                <h1>Sleek Internet - Checkout</h1>
+                <h1>Smurf Hotspot - Payment</h1>
                 <div class="order-summary">
                     <div class="order-item">
                         <img src="vc.png" class="order-item-image" alt="Bronze Plan">
                         <div class="order-item-details">
-                            <h3>Bronze Plan</h3>
-                            <div>Validity Period: 1 Hour</div>
-                            <div>1 Access User</div>
-                            <div>Unlimited Without Quota</div>
+                            <h3>WiFi Hotspot Plan</h3>
+                            <div id="validity">- Validity Period: </div>
+                            <div>- 1 Access User</div>
+                            <div>- Unlimited Without Quota</div>
                         </div>
-                        <div class="order-item-price">Ksh 20</div>
+                        <div id="price" class="order-item-price"></div>
                     </div>
                 </div>
             </div>
@@ -192,12 +191,15 @@
             <div class="card">
                 <div class="row">
                     <img src="mpesa.png" style="width:30%; margin: 0 35%;">
-                    <p>1. Enter the <b>phone number</b> and press "<b>Confirm and Pay</b>"<br>2. You will receive a popup on your phone. Enter your <b>MPESA PIN</b></p>
+                    <p>1. Enter the <b>phone number</b> and press "<b>Confirm and Pay</b>" </p>
+                    <p>2. You will receive a popup on your phone. Enter your <b>MPESA PIN</b></p>
                 </div>
                 <div class="row number">
                     <div class="info">
+
                         <label for="cardnumber">Phone number</label>
-                        <input id="cardnumber" type="text" name="phone_number" maxlength="10" placeholder="254700000000" />
+                        <input id="cardnumber" type="text" name="phone_number" maxlength="10" placeholder="e.g 0710000000" />
+                        <input type="hidden" name="product_name"  />
                     </div>
                 </div>
             </div>
@@ -207,7 +209,27 @@
             </div>
         </form>
 
-        <p>Copyright 2025| All Rights Reserved | Made by <a href="#">Smurf</a></p>
+        <p style="text-align:center">Copyright 2025| All Rights Reserved | Made by <a href="#">Smurf</a></p>
     </div>
+    <script type="text/javascript">
+         const urlParams = new URLSearchParams(window.location.search);
+         const productName = urlParams.get('product_name');
+         document.checkout.product_name.value = productName;
+         
+         const packages = [
+            { id: "quick30", validity: "30 Min", amount: 5 },
+            { id: "hourly3", validity: "1 Hour", amount: 10 },
+            { id: "halfday12", validity: "12 Hours", amount: 20 },
+            { id: "oneday24", validity: "24 Hours", amount: 30 },
+            { id: "weekly", validity: "1 Week", amount: 170 },
+            { id: "monthly", validity: "1 Month", amount: 700 },
+        ];
+
+        var validity = packages.filter(package => package.id == productName).map(p => "- Valid for "+ p.validity);
+        var price = packages.filter(package => package.id == productName).map(p => "Ksh "+ p.amount);;
+        document.getElementById("price").innerHTML = price;
+        document.getElementById("validity").innerHTML = validity;
+
+     </script>
 </body>
 </html>

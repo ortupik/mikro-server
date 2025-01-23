@@ -1,38 +1,44 @@
 <?php
   session_start();
-  include('status.php');
+  include('status_query.php');
 ?>
 <!DOCTYPE html>
 <html>
     <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <style>
             @import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900);
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900);
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
-  flex-direction: column; }
+  flex-direction: column;
+  padding:  20px;
+  max-width: 560px;
+  margin: 0% auto;
+  height: 100vh;
+  }
 
 * {
   box-sizing: border-box; }
 
-html {
-  background-color: #171A3D;
-  font-family: 'Lato', sans-serif; }
+body {
+  background-color: #f2f2f2;
+  font-family: 'Lato', sans-serif; 
+
+}
 
 .price h1 {
-  font-weight: 300;
-  color: #18C2C0;
-  letter-spacing: 2px; 
+  font-weight: bold;
+  color: #000;
   text-align:center;
 }
 
 .card {
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 520px; }
+ }
 .card .row {
     width: 100%;
     padding: 1rem 0;
@@ -68,9 +74,9 @@ font-size:16px; }
 
 .button button {
   font-size: 1.2rem;
+  width:100%;
   font-weight: 400;
   letter-spacing: 1px;
-  width: 520px;
   background-color: #18C2C0;
   border: none;
   color: #fff;
@@ -88,13 +94,14 @@ font-size:16px; }
     margin-right: 5px; }
 
         </style>
+
     </head>
    <body>
    <div class="container">
     <form action='' method='POST'>
     <div class="price">
-        <h1>Smurf Payment - Bronze 1 hour Ksh 20</h1>
-        <h1><?php echo $msg; ?></h1>
+        <h1>Payment  -  Ksh <?php echo $_SESSION['price'].' package for '. $_SESSION["validity"] ; ?></h1>
+        <h3 style="color:red; text-align:center;"><?php echo $msg; ?></h3>
     </div>
     <div class="card__container">
         <div class="card">
@@ -115,8 +122,9 @@ font-size:16px; }
         <button type="submit"><i class="ion-locked"></i> Confirm Payment</button>
     </div>
     </form>
-    <p style="color:#8F92C3;line-height:1.7;margin-top:5rem;">Copyright 2025 | All Rights Reserved | Made by Smurf</p>
+    <p style="color:#8F92C3;line-height:1.7;margin-top:5rem; text-align:center;">Copyright 2025 | All Rights Reserved | Made by Smurf</p>
 </div>
+
    </body>
 </html>
 

@@ -11,7 +11,7 @@ $content = file_get_contents('php://input');
 
 $res = json_decode($content, true);
 
-file_put_contents('mpesa_callback.log', print_r($res, true), FILE_APPEND);
+file_put_contents('callback.log', print_r($res, true), FILE_APPEND);
 
 
 
@@ -42,12 +42,13 @@ if ($stmt->execute()) {
     $updateStmt->bind_param("si", $status, $ID);
     $updateStmt->execute();
 
-    header('Location: confirm-payment.php');
+   // header('Location: confirm-payment.php');
 } else {
     $errors['database'] = "Unable to initiate your order: " . $conn->error;
     foreach ($errors as $error) {
         $errmsg .= $error . '<br />';
     }
+    echo $errmsg;
 }
 
 $conn->close();

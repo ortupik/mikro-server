@@ -1,0 +1,15 @@
+Array
+(
+    [Body] => Array
+        (
+            [stkCallback] => Array
+                (
+                    [MerchantRequestID] => bbcd-4a89-bd1a-6ecdc639893b1302190
+                    [CheckoutRequestID] => ws_CO_10012025151204992704624179
+                    [ResultCode] => 1032
+                    [ResultDesc] => Request cancelled by user
+                )
+
+        )
+
+)

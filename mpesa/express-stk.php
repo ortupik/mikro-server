@@ -3,19 +3,7 @@ session_start();
 
 $errors  = array();
 $errmsg  = '';
-
-$config = array(
-    "env"              => "sandbox",
-    "BusinessShortCode"=> "174379",
-    "key"              => "Ag3WMhXZnR0c19fPKV42VgpArCb9kdakGuc8vIdKC53w7SQP", //Enter your consumer key here
-    "secret"           => "5NqBQGqGxecLEbMGCAaYVAfwK0LpB2UJFRbggxtb032jtQOp3z14roYtOcPreStY", //Enter your consumer secret here
-    "username"         => "apitest",
-    "TransactionType"  => "CustomerPayBillOnline",
-    "passkey"          => "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919", //Enter your passkey here
-    "CallBackURL"      => "https://174.138.68.225/mpesa/callback.php",
-    "AccountReference" => "Smurf",
-    "TransactionDesc"  => "Bronze" ,
-);
+$url = "https://42c2-102-0-15-222.ngrok-free.app/mikhmon/";
 
 function generateRandomString() {
     $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -27,11 +15,49 @@ function generateRandomString() {
 }
 
 
-if (isset($_POST['phone_number'])) {
+if (isset($_POST['phone_number']) && isset($_POST["product_name"])) {
 
     $phone = $_POST['phone_number'];
+    $productName = $_POST['product_name'];
     $orderNo = generateRandomString();
-    $amount = 1;
+
+    $config = array(
+        "env"              => "sandbox",
+        "BusinessShortCode"=> "174379",
+        "key"              => "Ag3WMhXZnR0c19fPKV42VgpArCb9kdakGuc8vIdKC53w7SQP", 
+        "secret"           => "5NqBQGqGxecLEbMGCAaYVAfwK0LpB2UJFRbggxtb032jtQOp3z14roYtOcPreStY", 
+        "username"         => "testapi",
+        "TransactionType"  => "CustomerPayBillOnline",
+        "passkey"          => "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919", 
+        "CallBackURL"      =>  $url."mpesa/callback.php",
+        "AccountReference" => "Smurf",
+        "TransactionDesc"  => $productName ,
+    );
+
+    $packages = array(
+        array("id" => "quick30", "validity" => "30 Min", "amount" => 5),
+        array("id" => "hourly3", "validity" => "1 Hour", "amount" => 10),
+        array("id" => "halfday12", "validity" => "12 Hours", "amount" => 20),
+        array("id" => "oneday24", "validity" => "24 Hours", "amount" => 30),
+        array("id" => "weekly", "validity" => "1 Week", "amount" => 170),
+        array("id" => "monthly", "validity" => "1 Month", "amount" => 700),
+    );
+
+
+    $filteredPackage = array_filter($packages, function($package) use ($productName) {
+        return $package["id"] == $productName;
+    });
+
+    $validity = array_column($filteredPackage, "validity");
+    $price = array_column($filteredPackage, "amount");
+
+    //$amount = 1;
+    $amount = $price[0];
+
+    $_SESSION["validity"] = $validity[0];
+    $_SESSION["price"] = $amount;
+    $_SESSION["product_name"] = $productName;
+
 
     $phone = (substr($phone, 0, 1) == "+") ? str_replace("+", "", $phone) : $phone;
     $phone = (substr($phone, 0, 1) == "0") ? preg_replace("/^0/", "254", $phone) : $phone;
@@ -58,7 +84,7 @@ if (isset($_POST['phone_number'])) {
         "Password" => $password,
         "Timestamp" => $timestamp,
         "TransactionType" => $config['TransactionType'],
-        "Amount" => $amount,
+        "Amount" => 1,
         "PartyA" => $phone,
         "PartyB" => $config['BusinessShortCode'],
         "PhoneNumber" => $phone,
@@ -88,25 +114,24 @@ if (isset($_POST['phone_number'])) {
         $errors['phone'] = $result["errorMessage"];
     }
 
-   // var_dump($result);
-
     if($result['ResponseCode'] === "0"){
-        //STK Push request successful
         
         $MerchantRequestID = $result['MerchantRequestID'];
         $CheckoutRequestID = $result['CheckoutRequestID'];
+        $ResultDesc = $result['ResponseDescription'];
+
 
        // $conn = mysqli_connect("174.138.68.225","evstrjmuys","fxy7fQqTBR","evstrjmuys");
         $conn = mysqli_connect("localhost","root","","mpesa");
        
-        $sql = "INSERT INTO `orders`( `OrderNo`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`) VALUES ('".$orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."');";
+        $sql = "INSERT INTO `orders`( `OrderNo`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`,`ResultDesc`) VALUES ('".$orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."','".$ResultDesc."');";
         
         if ($conn->query($sql) === TRUE){
             $_SESSION["MerchantRequestID"] = $MerchantRequestID;
             $_SESSION["CheckoutRequestID"] = $CheckoutRequestID;
             $_SESSION["phone"] = $phone;
             $_SESSION["orderNo"] = $orderNo;
-
+            $_SESSION["ResultDesc"] = $ResultDesc;
             header('location: confirm-payment.php');
         }else{
             $errors['database'] = "Unable to make payment!: ".$conn->error;;  
@@ -123,6 +148,8 @@ if (isset($_POST['phone_number'])) {
         }
     }
     
+}else{
+     $errmsg .= 'Missing Product Name or Phone Number';
 }
 
 ?>

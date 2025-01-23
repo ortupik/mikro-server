@@ -6,10 +6,11 @@ include_once('../sms/sendSms.php');
 $API = new RouterosAPI();
 $API->debug = false;
 
-//$iphost = "192.168.6.1";
-$iphost = "id-12.hostddns.us:13575";
+$iphost = "192.168.6.1";
+//$iphost = "id-12.hostddns.us:13575";
 $userhost = "admin";
 $passwdhost = '12345678';
+$url = "https://9e53-102-0-15-222.ngrok-free.app/mikhmon/";
 
 $API->connect($iphost, $userhost, $passwdhost);
 
@@ -30,8 +31,8 @@ function generateRandomString($length = 7) {
     $secret = "5NqBQGqGxecLEbMGCAaYVAfwK0LpB2UJFRbggxtb032jtQOp3z14roYtOcPreStY";  //Put your secret here
     $initiatorName = "testapi";
     $initiatorPassword = "Safaricom999!*!";
-    $results_url = "https://174.138.68.225/mpesa/callback_test.php"; //Endpoint to receive results Body
-    $timeout_url = "https://174.138.68.225/mpesa/callback_test.php"; //Endpoint to to go to on timeout
+    $results_url = $url."mpesa/callback_test.php"; //Endpoint to receive results Body
+    $timeout_url = $url."mpesa/callback_test.php"; //Endpoint to to go to on timeout
 /*End  configurations*/
 
 /*Ensure transaction code is entered*/
@@ -49,7 +50,7 @@ function generateRandomString($length = 7) {
     $callback = null ;
     $msg = '';
 
-    if (isset($_POST['phone_number'])) {
+    if (isset($_POST['phone_number']) && isset($_SESSION["product_name"])) {
         $access_token = ($env == "live") ? "https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials" : "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"; 
         $credentials = base64_encode($key . ':' . $secret); 
         
@@ -71,6 +72,8 @@ function generateRandomString($length = 7) {
     
         //echo $token;
     
+        $profile = $_SESSION["product_name"];
+
         $curl_post_data = array( 
             "Initiator" => $initiatorName, 
             "SecurityCredential" => $password, 
@@ -109,7 +112,6 @@ function generateRandomString($length = 7) {
             $server = "hotspot1";
             $name = generateRandomString();
             $password = $name;
-            $profile = 'bronze';
             $disabled = false;
             $timelimit = '30m';
             $datalimit = '100M';
