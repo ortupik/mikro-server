@@ -6,7 +6,7 @@ error_reporting(0);
 include_once("../core/page_route.php");
 include_once("../core/no_cache.php");
 
-if(isset($_POST['logout']) && isset($_SESSION["mikhmon"])){
+if(isset($_POST['logout']) && isset($_SESSION["surf"])){
     session_destroy();
     echo $_POST['logout'];
 

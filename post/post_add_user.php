@@ -8,7 +8,7 @@ include_once("../core/no_cache.php");
 
 
 
-if(isset($_POST['name']) && isset($_SESSION["mikhmon"])){
+if(isset($_POST['name']) && isset($_SESSION["surf"])){
 
 	$m_user = explode("?",$_POST['sessname'])[1];
 	$server = $_POST['server'];

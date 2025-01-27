@@ -23,7 +23,7 @@ if($self[0] !== "index.php"  && $self[0] !==""){
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>MIKHMON <?= $hotspotname; ?></title>
+		<title>surf <?= $hotspotname; ?></title>
 		<meta charset="utf-8">
 		<!-- <meta http-equiv="cache-control" content="private" /> -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,8 +33,8 @@ if($self[0] !== "index.php"  && $self[0] !==""){
 		<meta name="theme-color" content="<?= $themecolor ?>" />
 		<!-- Font Awesome -->
 		<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome/css/font-awesome.min.css" />
-		<!-- Mikhmon UI -->
-		<link rel="stylesheet" href="assets/css/mikhmon-ui.<?= $theme ?>.css" />
+		<!-- surf UI -->
+		<link rel="stylesheet" href="assets/css/surf-ui.<?= $theme ?>.css" />
 		<!-- favicon -->
 		<link rel="icon" href="assets/img/favicon.png" />
 		<!-- jQuery -->

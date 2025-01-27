@@ -59,8 +59,8 @@ if ($currency == in_array($currency, $cekindo['indo'])) {
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
 <!-- Font Awesome -->
 <link rel="stylesheet" type="text/css" href="../css/font-awesome/css/font-awesome.min.css" />
-<!-- Mikhmon UI -->
-<link rel="stylesheet" href="../css/mikhmon-ui.<?= $theme; ?>.min.css">
+<!-- surf UI -->
+<link rel="stylesheet" href="../css/surf-ui.<?= $theme; ?>.min.css">
 <link rel="icon" href="../img/favicon.png" />
 <script>
 function goBack() {

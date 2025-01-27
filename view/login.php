@@ -16,10 +16,10 @@ if($self[0] !== "index.php"  && $self[0] !==""){
     foreach (file('./config/config.php',FILE_SKIP_EMPTY_LINES) as $line) {
       $ss = explode("'", $line)[1];
       clearstatcache();
-      if ($ss === 'mikhmon') {
+      if ($ss === 'surf') {
 
-          $useradm = get_config($line,'mikhmon<|<', "'");
-          $passadm = get_config($line,'mikhmon>|>', "'");
+          $useradm = get_config($line,'surf<|<', "'");
+          $passadm = get_config($line,'surf>|>', "'");
       
         if (!isset($is_mobile)) {
           $col = "col-5";
@@ -36,7 +36,7 @@ if($self[0] !== "index.php"  && $self[0] !==""){
             $user = ($_POST['user']);
             $pass = ($_POST['pass']);
             if ($user === $useradm && $pass === dec_rypt($passadm)) {
-                $_SESSION["mikhmon"] = $user;
+                $_SESSION["surf"] = $user;
                 echo $urlLogin;
             } else {
              
@@ -57,7 +57,7 @@ if($self[0] !== "index.php"  && $self[0] !==""){
 <div  class="mr-b-10">
 <center>
   <div class="logo-login"></div>
-  <span class="login-title">Login to MIKHMON</span>
+  <span class="login-title">Login to surf</span>
 </center> 
 </div>
     <?= $error; ?>

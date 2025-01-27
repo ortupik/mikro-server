@@ -21,7 +21,7 @@ error_reporting(0);
 
 ob_start("ob_gzhandler");
 
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
   header("Location:../admin.php?id=login");
 } else {
   

@@ -18,7 +18,7 @@
 
 // hide all error
 error_reporting(0);
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
   header("Location:../admin.php?id=login");
 } else {
 // array color
@@ -36,7 +36,7 @@ if (!isset($_SESSION["mikhmon"])) {
 <div class="row">
 <?php
 // get quick print
-$getquickprint = $API->comm("/system/script/print", array("?comment" => "QuickPrintMikhmon"));
+$getquickprint = $API->comm("/system/script/print", array("?comment" => "QuickPrintsurf"));
 $TotalReg = count($getquickprint);
 for ($i = 0; $i < $TotalReg; $i++) {
   $quickprintdetails = $getquickprint[$i];

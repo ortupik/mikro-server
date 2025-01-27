@@ -19,7 +19,7 @@ if($m_user != "admin" && !isMobile()){
 
 ?>
 <div class="sidenav unselect">
-  <div class="text-center" id="brand">MIKHMON</div>
+  <div class="text-center" id="brand">surf</div>
   <div class="image-circle" style="background-image: url('<?= $logo ?>')"></div>
   <div class="sidenav_item tooltip">
     <select id="lsession" style="border:none;border-radius: 3px;font-weight: bold; width: 100%;" onchange="connect('statconn',this.value)">
@@ -29,7 +29,7 @@ if($m_user != "admin" && !isMobile()){
         foreach (file('./config/config.php',FILE_SKIP_EMPTY_LINES) as $line) {
         $s = explode("'", $line)[1];                      
         $i++;
-        if ($s == "" || $s == "mikhmon") {
+        if ($s == "" || $s == "surf") {
         } else { 
         ?>
         <option value="<?= $s; ?>"><?= strtoupper($s); ?></option>
@@ -69,7 +69,7 @@ if($m_user != "admin" && !isMobile()){
 <?php }else if($m_user == "admin" && !isMobile()){ ?>
 
 <div class="sidenav unselect">
-  <div class="text-center" id="brand">MIKHMON</div>
+  <div class="text-center" id="brand">surf</div>
   <div class="image-circle" style="background-image: url('<?= $logo ?>')"></div>
   <a href="?<?= $m_user ?>/settings" class="sidenav_item <?= $settings_ma ?>" ><i class="fa fa-gear"></i> Settings</a>
   <a href="?<?= $m_user ?>/template_editor" class="sidenav_item <?= $editor_ma ?>" ><i class="fa fa-edit"></i> Template Editor</a>
@@ -119,7 +119,7 @@ if($m_user != "admin" && !isMobile()){
         foreach (file('./config/config.php',FILE_SKIP_EMPTY_LINES) as $line) {
         $s = explode("'", $line)[1];                      
         $i++;
-        if ($s == "" || $s == "mikhmon") {
+        if ($s == "" || $s == "surf") {
         } else { 
         ?>
         <option value="<?= $s; ?>"><?= strtoupper($s); ?></option>

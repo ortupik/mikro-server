@@ -18,7 +18,7 @@
 
 // hide all error
 error_reporting(0);
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
 	echo '
 <html>
 <head><title>403 Forbidden</title></head>

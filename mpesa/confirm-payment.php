@@ -122,7 +122,7 @@ font-size:16px; }
         <button type="submit"><i class="ion-locked"></i> Confirm Payment</button>
     </div>
     </form>
-    <p style="color:#8F92C3;line-height:1.7;margin-top:5rem; text-align:center;">Copyright 2025 | All Rights Reserved | Made by Smurf</p>
+    <p style="color:#8F92C3;line-height:1.7;margin-top:5rem; text-align:center;">Copyright 2025 | All Rights Reserved | Made by surf</p>
 </div>
 
    </body>

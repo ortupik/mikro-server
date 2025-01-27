@@ -7,7 +7,7 @@ include_once("../core/page_route.php");
 include_once("../core/no_cache.php");
 
 
-if(isset($_POST['sessname']) && isset($_SESSION["mikhmon"])){
+if(isset($_POST['sessname']) && isset($_SESSION["surf"])){
 
     $m_user = explode("?",$_POST['sessname'])[1];
     $where = $_POST['where'];

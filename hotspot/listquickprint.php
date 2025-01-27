@@ -21,7 +21,7 @@ error_reporting(0);
 
 ini_set('max_execution_time', 300);
 
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
 	header("Location:../admin.php?id=login");
 } else {
 	$qpid = $_GET['qpid'];
@@ -134,13 +134,13 @@ $getquickprint = $API->comm("/system/script/print", array("?.id" => "$qpid"));
 				".id" => "$qpid",
 				"name" => "$sname",
 				"source" => "$source",
-				"comment" => "QuickPrintMikhmon",
+				"comment" => "QuickPrintsurf",
 		));
 		}else{
         $API->comm("/system/script/add", array(
             "name" => "$sname",
             "source" => "$source",
-            "comment" => "QuickPrintMikhmon",
+            "comment" => "QuickPrintsurf",
 				));
 			}
 
@@ -307,7 +307,7 @@ $getquickprint = $API->comm("/system/script/print", array("?.id" => "$qpid"));
                     </tr>
 <?php
 // get quick print
-$getquickprint = $API->comm("/system/script/print", array("?comment" => "QuickPrintMikhmon"));
+$getquickprint = $API->comm("/system/script/print", array("?comment" => "QuickPrintsurf"));
 $TotalReg = count($getquickprint);
 for ($i = 0; $i < $TotalReg; $i++) {
   $quickprintdetails = $getquickprint[$i];

@@ -21,7 +21,7 @@ $_SESSION['m_user'] = $m_user;
 $_SESSION["admin"] = "admin";
 
 // route page
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
     route("admin","login",$admin_page);
 }else if(empty($m_user) && empty($page) || $m_user == "admin" && empty($page)){
         header('Location: ./?admin/settings');      
@@ -41,7 +41,7 @@ if (!isset($_SESSION["mikhmon"])) {
 // all session
 foreach (file('./config/config.php') as $line) {
     $ses = explode("'", $line)[1];
-    if($ses !== "mikhmon"){
+    if($ses !== "surf"){
         $_SESSION["$ses"] = $ses;
     }
 }

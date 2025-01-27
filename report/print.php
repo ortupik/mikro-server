@@ -18,7 +18,7 @@
 session_start();
 // hide all error
 error_reporting(0);
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
 	header("Location:../admin.php?id=login");
 } else {
   
@@ -127,7 +127,7 @@ if (!isset($_SESSION["mikhmon"])) {
 	} elseif ($idhr == "" || $idbl == "") {
 		if ($API->connect($iphost, $userhost, decrypt($passwdhost))) {
 			$getData = $API->comm("/system/script/print", array(
-				"?comment" => "mikhmon",
+				"?comment" => "surf",
 			));
 			$TotalReg = count($getData);
 		}
@@ -151,7 +151,7 @@ if (!isset($_SESSION["mikhmon"])) {
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>.:: MIKHMON <?= $hotspotname; ?> ::.</title>
+		<title>.:: surf <?= $hotspotname; ?> ::.</title>
 		<meta charset="utf-8">
 		<meta http-equiv="cache-control" content="private" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -76,13 +76,13 @@ include_once("config/connection.php");
 
 }else if (isset($prev)){
    $get_users = array(
-                    0 => array("name" => "mikhmon","password" => "1234","profile" => "1day","limit-uptime" => "1d", "limit-bytes-total" => 10737418240, "comment" => "mikhmon-preview" )
+                    0 => array("name" => "surf","password" => "1234","profile" => "1day","limit-uptime" => "1d", "limit-bytes-total" => 10737418240, "comment" => "surf-preview" )
                   );
   $TotalReg = count($get_users); 
   $validity = "1d";
   $getprice = "3";
   $getsprice = "5"; 
-  $hotspotname = "MIKHMON";
+  $hotspotname = "surf";
   $dnsname = "laksa19.github.io";
   $phone = "6281xxxxxxxxx";
   $currency = "$";

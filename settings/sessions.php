@@ -18,7 +18,7 @@
 
 // hide all error
 error_reporting(0);
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
   header("Location:../admin.php?id=login");
 } else {
 
@@ -32,8 +32,8 @@ if (!isset($_SESSION["mikhmon"])) {
     $logobt = ($_POST['logobt']);
     $qrbt = ($_POST['qrbt']);
 
-    $cari = array('1' => "mikhmon<|<$useradm", "mikhmon>|>$passadm");
-    $ganti = array('1' => "mikhmon<|<$suseradm", "mikhmon>|>$spassadm");
+    $cari = array('1' => "surf<|<$useradm", "surf>|>$passadm");
+    $ganti = array('1' => "surf<|<$suseradm", "surf>|>$spassadm");
 
     for ($i = 1; $i < 3; $i++) {
       $file = file("./include/config.php");
@@ -81,7 +81,7 @@ if (!isset($_SESSION["mikhmon"])) {
               <?php
               foreach (file('./include/config.php') as $line) {
                 $value = explode("'", $line)[1];
-                if ($value == "" || $value == "mikhmon") {
+                if ($value == "" || $value == "surf") {
                 } else { ?>
                     <div class="col-12">
                         <div class="box bmh-75 box-bordered <?= $color[rand(1, 11)]; ?>">

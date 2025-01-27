@@ -19,14 +19,15 @@ $API = new RouterosAPI();
 $API->debug = false;
 
 
-$iphost = "192.168.6.1";
-//$iphost = "id-12.hostddns.us:13575";
+//$iphost = "192.168.6.1";
+$iphost = "sg-10.hostddns.us";
 $userhost = "admin";
 $passwdhost = '12345678';
-$url = "https://42c2-102-0-15-222.ngrok-free.app/mikhmon/";
+$url = "http://204.13.232.131/";
+$port = 18421;
 
 
-$API->connect($iphost, $userhost, $passwdhost);
+$API->connect($iphost, $userhost, $passwdhost, $port);
 
 
 $env="sandbox";
@@ -121,7 +122,7 @@ if (isset($_POST['phone_number']) && isset($_SESSION["product_name"])) {
             $voucher = $name;
 
             
-            $message = 'Smurf Wifi: Congratulations! You have successfully subscribed to 1 hour internet plan. Your subscription code is '.$voucher;
+            $message = 'surf Wifi: Congratulations! You have successfully subscribed to 1 hour internet plan. Your subscription code is '.$voucher;
             //sendSms($phoneNumber, $message);
 
             $msg .= "Payment Successfull!";
@@ -134,12 +135,12 @@ if (isset($_POST['phone_number']) && isset($_SESSION["product_name"])) {
             confirmButtonText: 'OK'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = 'http://smurf.co.ke/login?voucher=$voucher';
+                window.location.href = 'http://surf.co.ke/login?voucher=$voucher';
             }
         });
     </script>";
 
-    // header('Location: http://smurf.co.ke/login?voucher=' . $voucher);
+    // header('Location: http://surf.co.ke/login?voucher=' . $voucher);
     }else{
         $msg .=  $result->{'ResultDesc'};
         echo "<script>
@@ -150,7 +151,7 @@ if (isset($_POST['phone_number']) && isset($_SESSION["product_name"])) {
             confirmButtonText: 'Retry'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = 'http://smurf.co.ke/login';
+                window.location.href = 'http://surf.co.ke/login';
             }
         });
     </script>";

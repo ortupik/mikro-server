@@ -19,7 +19,7 @@ session_start();
 ?>
 <?php
 error_reporting(0);
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
 	header("Location:../admin.php?id=login");
 } else {
 // load session MikroTik
@@ -123,7 +123,7 @@ textarea{
 	    					</td>
 						</tr>
 						</table>
-	        	<textarea class="bg-dark" id="editorMikhmon" name="editor" style="width:100%" height="700">
+	        	<textarea class="bg-dark" id="editorsurf" name="editor" style="width:100%" height="700">
 						<?php if ($telplate == "default") {
 						echo file_get_contents('./voucher/template.php');
 					} elseif ($telplate == "thermal") {

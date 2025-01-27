@@ -3,7 +3,7 @@ session_start();
 
 $errors  = array();
 $errmsg  = '';
-$url = "https://42c2-102-0-15-222.ngrok-free.app/mikhmon/";
+$url = "http://204.13.232.131/";
 
 function generateRandomString() {
     $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -30,7 +30,7 @@ if (isset($_POST['phone_number']) && isset($_POST["product_name"])) {
         "TransactionType"  => "CustomerPayBillOnline",
         "passkey"          => "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919", 
         "CallBackURL"      =>  $url."mpesa/callback.php",
-        "AccountReference" => "Smurf",
+        "AccountReference" => "surf",
         "TransactionDesc"  => $productName ,
     );
 

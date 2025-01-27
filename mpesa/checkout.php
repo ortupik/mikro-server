@@ -173,7 +173,7 @@
        
        <form name="checkout" action='<?php echo $_SERVER['PHP_SELF'] ?>' method='POST'>
             <div class="price">
-                <h1>Smurf Hotspot - Payment</h1>
+                <h1>surf Hotspot - Payment</h1>
                 <div class="order-summary">
                     <div class="order-item">
                         <img src="vc.png" class="order-item-image" alt="Bronze Plan">
@@ -209,7 +209,7 @@
             </div>
         </form>
 
-        <p style="text-align:center">Copyright 2025| All Rights Reserved | Made by <a href="#">Smurf</a></p>
+        <p style="text-align:center">Copyright 2025| All Rights Reserved | Made by <a href="#">surf</a></p>
     </div>
     <script type="text/javascript">
          const urlParams = new URLSearchParams(window.location.search);

@@ -10,7 +10,7 @@ $iphost = "192.168.6.1";
 //$iphost = "id-12.hostddns.us:13575";
 $userhost = "admin";
 $passwdhost = '12345678';
-$url = "https://9e53-102-0-15-222.ngrok-free.app/mikhmon/";
+$url = "https://9e53-102-0-15-222.ngrok-free.app/surf/";
 
 $API->connect($iphost, $userhost, $passwdhost);
 
@@ -134,10 +134,10 @@ function generateRandomString($length = 7) {
             
             $voucher = $name;
             
-            $message = 'Smurf Wifi: Congratulations! You have successfully subscribed to 1 hour internet plan. Your subscription code is '.$voucher;
+            $message = 'surf Wifi: Congratulations! You have successfully subscribed to 1 hour internet plan. Your subscription code is '.$voucher;
             sendSms('+254705130991', $message);
 
-            header('Location: http://smurf.co.ke/login?voucher=' . $voucher);
+            header('Location: http://surf.co.ke/login?voucher=' . $voucher);
         }else{
            echo $msg .=  "Verification Request UNSUCCESSFUL! ";
         }

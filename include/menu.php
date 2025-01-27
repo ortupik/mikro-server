@@ -19,7 +19,7 @@ session_start();
 // hide all error
 error_reporting(0);
 
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
   header("Location:../admin.php?id=login");
 } else {
 
@@ -173,7 +173,7 @@ if($idleto != "disable"){
 
 <div id="navbar" class="navbar">
   <div class="navbar-left">
-    <a id="brand" class="text-center" href="javascript:void(0)">MIKHMON</a>
+    <a id="brand" class="text-center" href="javascript:void(0)">surf</a>
 
 <a id="openNav" class="navbar-hover" href="javascript:void(0)"><i class="fa fa-bars"></i></a>
 <a id="closeNav" class="navbar-hover" href="javascript:void(0)"><i class="fa fa-bars"></i></a>
@@ -210,9 +210,9 @@ if($idleto != "disable"){
 <?php if (($id == "settings" && $session == "new") || $id == "settings" && $router == "new") {
 }else if ($id == "settings" || $id == "editor"|| $id == "uplogo" || $id == "connect"){
 ?>  
-  <div class="menu text-center align-middle card-header" style="border-radius:0;"><h3 id="MikhmonSession"><?= $session; ?></h3></div>
+  <div class="menu text-center align-middle card-header" style="border-radius:0;"><h3 id="surfSession"><?= $session; ?></h3></div>
   <a class="connect menu <?= $shome; ?>" id="<?= $session; ?>&c=settings"><i class='fa fa-tachometer'></i> <?= $_dashboard ?></a>
-  <a  href="./admin.php?id=settings&session=<?= $session; ?>" class="menu <?= $ssettings; ?>" title="Mikhmon Settings"><i class='fa fa-gear'></i> <?= $_session_settings ?></a>
+  <a  href="./admin.php?id=settings&session=<?= $session; ?>" class="menu <?= $ssettings; ?>" title="surf Settings"><i class='fa fa-gear'></i> <?= $_session_settings ?></a>
   <a href="./admin.php?id=uplogo&session=<?= $session; ?>" class="menu <?= $suplogo; ?>"><i class="fa fa-upload "></i> <?= $_upload_logo ?></a>
   <a href="./admin.php?id=editor&template=default&session=<?= $session; ?>" class="menu <?= $seditor; ?>"><i class="fa fa-edit"></i> <?= $_template_editor ?></a>
   <div class="menu spa"></div>
@@ -248,7 +248,7 @@ include('./info.php');
 
 <div id="navbar" class="navbar">
   <div class="navbar-left">
-    <a id="brand" class="text-center" href="./?session=<?= $session; ?>">MIKHMON</a>
+    <a id="brand" class="text-center" href="./?session=<?= $session; ?>">surf</a>
 
 <a id="openNav" class="navbar-hover" href="javascript:void(0)"><i class="fa fa-bars"></i></a>
 <a id="closeNav" class="navbar-hover" href="javascript:void(0)"><i class="fa fa-bars"></i></a>
@@ -264,11 +264,11 @@ include('./info.php');
     ?>
   </select>
   <select class="connect optfa ses text-right mr-t-10 pd-5">
-    <option id="MikhmonSession" value="<?= $session; ?>"><?= $hotspotname; ?></option>
+    <option id="surfSession" value="<?= $session; ?>"><?= $hotspotname; ?></option>
       <?php
       foreach (file('./include/config.php') as $line) {
         $sesname = explode("'", $line)[1];
-        if ($sesname == "" || $sesname== "mikhmon") {
+        if ($sesname == "" || $sesname== "surf") {
         } else {
         if($sesname == $session){
           echo '<option value="' . $sesname. '">'.$sesname. ' &#x2666;</option>';

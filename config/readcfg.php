@@ -33,8 +33,8 @@ if($self[0] !== "index.php"  && $self[0] !==""){
           $token = get_config($line,$m_user.'#!#', "'");
           $_SESSION[$m_user.'-report'] = $report;
 
-          $useradm = get_config($line,'mikhmon<|<', "'");
-          $passadm = get_config($line,'mikhmon>|>', "'");
+          $useradm = get_config($line,'surf<|<', "'");
+          $passadm = get_config($line,'surf>|>', "'");
       }
     }
 

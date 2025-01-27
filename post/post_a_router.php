@@ -10,7 +10,7 @@ include_once("../core/routeros_api.class.php");
 
 
 
-if(isset($_POST['router_']) && isset($_SESSION["mikhmon"])){
+if(isset($_POST['router_']) && isset($_SESSION["surf"])){
    $do = $_POST['do'];
    $config_file = "../config/config.php";
    $router = $_POST['router_'];
@@ -152,14 +152,14 @@ if(isset($_POST['router_']) && isset($_SESSION["mikhmon"])){
     		}else if (is_file($config_file) && is_writable($config_file)){
 		  		foreach (file('../config/config.php',FILE_SKIP_EMPTY_LINES) as $line) {
 			      $ss = explode("'", $line)[1];
-			      $useradm = get_config($line,'mikhmon<|<', "'");
-			      $passadm = get_config($line,'mikhmon>|>', "'");
+			      $useradm = get_config($line,'surf<|<', "'");
+			      $passadm = get_config($line,'surf>|>', "'");
 			      
-			      if ($ss == "mikhmon") {
+			      if ($ss == "surf") {
 			      	
 
-				    $cari = array('1' => "mikhmon<|<$useradm", "mikhmon>|>$passadm");
-				    $ganti = array('1' => "mikhmon<|<$suseradm", "mikhmon>|>$spassadm");
+				    $cari = array('1' => "surf<|<$useradm", "surf>|>$passadm");
+				    $ganti = array('1' => "surf<|<$suseradm", "surf>|>$spassadm");
 				    
 		    			
 		    		

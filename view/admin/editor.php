@@ -87,7 +87,7 @@ textarea{
                 	<button class="bg-btn-group" id="vpreview" ><i class="fa fa-eye" ></i> Preview</button>
                 </div>
                 <div class="card-fixed mr-t-5">
-                	<textarea class="bg-dark" id="editorMikhmon" name="editor" style="width:100%"></textarea>
+                	<textarea class="bg-dark" id="editorsurf" name="editor" style="width:100%"></textarea>
                 </div>
               </div>
 
@@ -201,7 +201,7 @@ textarea{
                 </div>
                 <div class="card-fixed mr-t-5">
                   <span class="card-tab card-tab-active" id="active-edit"></span>
-                  <textarea class="bg-dark" id="editorMikhmon" name="editor" style="width:100%"></textarea>
+                  <textarea class="bg-dark" id="editorsurf" name="editor" style="width:100%"></textarea>
                 </div>
               </div>
 

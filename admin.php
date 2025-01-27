@@ -74,7 +74,7 @@ if ($id == "login" || substr($url, -1) == "p") {
     $user = $_POST['user'];
     $pass = $_POST['pass'];
     if ($user == $useradm && $pass == decrypt($passadm)) {
-      $_SESSION["mikhmon"] = $user;
+      $_SESSION["surf"] = $user;
 
         echo "<script>window.location='./admin.php?id=sessions'</script>";
     
@@ -85,7 +85,7 @@ if ($id == "login" || substr($url, -1) == "p") {
   
 
   include_once('./include/login.php');
-} elseif (!isset($_SESSION["mikhmon"])) {
+} elseif (!isset($_SESSION["surf"])) {
   echo "<script>window.location='./admin.php?id=login'</script>";
 } elseif (substr($url, -1) == "/" || substr($url, -4) == ".php") {
   echo "<script>window.location='./admin.php?id=sessions'</script>";
@@ -125,9 +125,9 @@ if ($id == "login" || substr($url, -1) == "p") {
     $_SESSION["connect"] = "<b class='text-red'>Not Connected</b>";
     $nl = '\n';
     if ($currency == in_array($currency, $cekindo['indo'])) {
-      echo "<script>alert('Mikhmon not connected!".$nl."Silakan periksa kembali IP, User, Password dan port API harus enable.".$nl."Jika menggunakan koneksi VPN, pastikan VPN tersebut terkoneksi.')</script>";
+      echo "<script>alert('surf not connected!".$nl."Silakan periksa kembali IP, User, Password dan port API harus enable.".$nl."Jika menggunakan koneksi VPN, pastikan VPN tersebut terkoneksi.')</script>";
     }else{
-      echo "<script>alert('Mikhmon not connected!".$nl."Please check the IP, User, Password and port API must be enabled.')</script>";
+      echo "<script>alert('surf not connected!".$nl."Please check the IP, User, Password and port API must be enabled.')</script>";
     }
     if($c == "settings"){
       echo "<script>window.location='./admin.php?id=settings&session=" . $session . "'</script>";
@@ -177,8 +177,8 @@ if ($id == "login" || substr($url, -1) == "p") {
 	echo "<script>window.location='./admin.php?id=sessions'</script>";
 }
 ?>
-<script src="js/mikhmon-ui.<?= $theme; ?>.min.js"></script>
-<script src="js/mikhmon.js?t=<?= str_replace(" ","_",date("Y-m-d H:i:s")); ?>"></script>
+<script src="js/surf-ui.<?= $theme; ?>.min.js"></script>
+<script src="js/surf.js?t=<?= str_replace(" ","_",date("Y-m-d H:i:s")); ?>"></script>
 <?php include('./include/info.php'); ?>
 </body>
 </html>

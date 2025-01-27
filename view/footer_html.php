@@ -24,7 +24,7 @@ if($self[0] !== "index.php"  && $self[0] !==""){
     localStorage.setItem("?<?= $_SESSION['m_user'] ?>_theme","<?= $theme ?>");
 </script>
 
-<script src="assets/js/mikhmon.js?t=<?= $randTime ?>"></script>
+<script src="assets/js/surf.js?t=<?= $randTime ?>"></script>
 <script src="assets/js/format.js?t=<?= $randTime ?>"></script>
 <script src="assets/js/func.js?t=<?= $randTime ?>"></script>
 <script src="assets/js/fancyTable.js"></script>

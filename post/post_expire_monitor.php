@@ -7,7 +7,7 @@ include_once("../core/page_route.php");
 include_once("../core/no_cache.php");
 
 
-if(isset($_POST['sessname']) && isset($_SESSION["mikhmon"])){
+if(isset($_POST['sessname']) && isset($_SESSION["surf"])){
 
 	$m_user = explode("?",$_POST['sessname'])[1];
 
@@ -29,16 +29,16 @@ if(isset($_POST['sessname']) && isset($_SESSION["mikhmon"])){
     $API->connect($iphost, $userhost, dec_rypt($passwdhost));
 
   	$get_expire_mon = $API->comm("/system/scheduler/print", array(
-            "?name" => "Mikhmon-Expire-Monitor",));
+            "?name" => "surf-Expire-Monitor",));
 
-    if($get_expire_mon[0]['name'] !== "Mikhmon-Expire-Monitor"){
+    if($get_expire_mon[0]['name'] !== "surf-Expire-Monitor"){
       $expmon = $API->comm("/system/scheduler/add", array(
-        "name" => "Mikhmon-Expire-Monitor",
+        "name" => "surf-Expire-Monitor",
         "start-time" => "00:00:00",
         "interval" => "00:01:00",
         "on-event" => "$expire_monitor_src",
         "disabled" => "no",
-        "comment" => "Mikhmon Expire Monitor",
+        "comment" => "surf Expire Monitor",
         ));
       if(substr($expmon, 0,1) == "*"){
         $mess = array(

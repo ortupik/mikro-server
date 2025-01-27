@@ -14,10 +14,10 @@ if($self[0] !== "index.php"  && $self[0] !==""){
 $detail = '
 <div class="pd-10">
     <?= $sasa ?>
-    <h2>MIKHMON</h2>
+    <h2>surf</h2>
     <p>
       <ul>
-        <li>App Name : MIKHMON | MikroTik Hotspot Monitor</li>
+        <li>App Name : surf | MikroTik Hotspot Monitor</li>
         <li>Author : <a style="text-decoration: underline;" href="https://fb.com/laksamadi" target="_blank">Laksamadi Guko</a></li>
         <li>Licence : <a href="#">MIT</a></li>
         <li>Website : <a style="text-decoration: underline;" href="https://laksa19.github.io" target="_blank">https://laksa19.github.io</a></li>
@@ -38,7 +38,7 @@ $detail = '
       Semoga makin sukses.
     </p>
     <p>
-      Terima kasih untuk semua yang telah mendukung pengembangan MIKHMON.
+      Terima kasih untuk semua yang telah mendukung pengembangan surf.
     </p>
     <div>
         <i>Copyright &copy; 2017 -'.date("Y").' Laksamadi Guko</i>

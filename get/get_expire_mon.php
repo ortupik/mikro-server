@@ -15,10 +15,10 @@ if($self[0] !== "index.php"  && $self[0] !==""){
           
           
           $get_expire_mon = $API->comm("/system/scheduler/print", array(
-            "?name" => "Mikhmon-Expire-Monitor", "?disabled" => "false"
+            "?name" => "surf-Expire-Monitor", "?disabled" => "false"
             
           ));
-            if($get_expire_mon[0]['name'] == "Mikhmon-Expire-Monitor"){
+            if($get_expire_mon[0]['name'] == "surf-Expire-Monitor"){
               $mess = array("expire_monitor" => "ok");
               $expmon = json_encode($mess);
             }else{

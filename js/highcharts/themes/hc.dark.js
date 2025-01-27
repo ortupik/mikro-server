@@ -1,5 +1,5 @@
 /**
- * Mikhmon Dark theme for Highcharts JS
+ * surf Dark theme for Highcharts JS
  * @author Laksamadi Guko
  */
 

@@ -20,7 +20,7 @@
 error_reporting(0);
 ini_set('max_execution_time', 300);
 
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
   header("Location:../admin.php?id=login");
 } else {
 

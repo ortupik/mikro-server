@@ -21,7 +21,7 @@ error_reporting(0);
 
 ob_start("ob_gzhandler");
 
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
   header("Location:../admin.php?id=login");
 } else {
 
@@ -49,7 +49,7 @@ if (!isset($_SESSION["mikhmon"])) {
   }
 
  
-  $username = "mikhmon";
+  $username = "surf";
   $password = "1234";
   $timelimit = "6h";
   $getdatalimit = "1073741824";

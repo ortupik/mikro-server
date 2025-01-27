@@ -44,7 +44,7 @@ include_once("view/menu.php");
                 foreach (file('./config/config.php',FILE_SKIP_EMPTY_LINES) as $line) {
                 $s = explode("'", $line)[1];                      
                 $i++;
-                if ($s == "" || $s == "mikhmon") {
+                if ($s == "" || $s == "surf") {
                 } else { 
                 ?>
                 <option value="<?= $s; ?>"><?= strtoupper($s); ?></option>

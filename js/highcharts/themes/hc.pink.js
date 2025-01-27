@@ -1,5 +1,5 @@
 /**
- * Mikhmon Pink theme for Highcharts JS
+ * surf Pink theme for Highcharts JS
  * @author Laksamadi Guko
  */
 

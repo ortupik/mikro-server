@@ -9,7 +9,7 @@ include_once("../core/routeros_api.class.php");
 
 
 
-if(isset($_POST['router_']) && isset($_SESSION["mikhmon"])){
+if(isset($_POST['router_']) && isset($_SESSION["surf"])){
    $do = $_POST['do'];    
     if($do == "saveTemplate"){
   		$template = $_POST['_template'];

@@ -18,7 +18,7 @@
 session_start();
 // hide all error
 error_reporting(0);
-if (!isset($_SESSION["mikhmon"])) {
+if (!isset($_SESSION["surf"])) {
   header("Location:../admin.php?id=login");
 } else {
 }
@@ -57,7 +57,7 @@ if (!isset($_SESSION["mikhmon"])) {
       Author : Laksamadi Guko
     </li>
     <li>
-      Licence : <a href="https://github.com/laksa19/mikhmonv2/blob/master/LICENSE">GPLv2</a>
+      Licence : <a href="https://github.com/laksa19/surfv2/blob/master/LICENSE">GPLv2</a>
     </li>
     <li>
       API Class : <a href="https://github.com/BenMenking/routeros-api">routeros-api</a>
@@ -71,7 +71,7 @@ if (!isset($_SESSION["mikhmon"])) {
   </ul>
 </p>
 <p>
-  Terima kasih untuk semua yang telah mendukung pengembangan MIKHMON.
+  Terima kasih untuk semua yang telah mendukung pengembangan surf.
 </p>
 <div>
     <i>Copyright &copy; <i> 2018 Laksamadi Guko</i></i>
@@ -86,7 +86,7 @@ if (!isset($_SESSION["mikhmon"])) {
   </div>
   <div class="card-body">
   <div class="iFWrapper">
-    <iframe src="https://laksa19.github.io/mikhmonv3" ></iframe>
+    <iframe src="https://laksa19.github.io/surfv3" ></iframe>
   </div>
   </div>
 </div>

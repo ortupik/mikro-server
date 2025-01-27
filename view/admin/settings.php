@@ -83,9 +83,9 @@ if(!isMobile()){
                   <?php
                   foreach (file('./config/config.php',FILE_SKIP_EMPTY_LINES) as $line) {
                   $s = explode("'", $line)[1];
-                  $useradm = get_config($line,'mikhmon<|<', "'");
-                  $passadm = get_config($line,'mikhmon>|>', "'");
-                  if ($s == "mikhmon") { ?>
+                  $useradm = get_config($line,'surf<|<', "'");
+                  $passadm = get_config($line,'surf>|>', "'");
+                  if ($s == "surf") { ?>
                   
                     <div class="row">
                       <div class="col-6">
@@ -156,7 +156,7 @@ if(!isMobile()){
                             $idleto = get_config($line,$s.'=', "'");
                                                         
                             $i++;
-                            if ($s == "" || $s == "mikhmon") {
+                            if ($s == "" || $s == "surf") {
 
                             } else { 
 
@@ -440,9 +440,9 @@ if(!isMobile()){
                   <?php
                   foreach (file('./config/config.php',FILE_SKIP_EMPTY_LINES) as $line) {
                   $s = explode("'", $line)[1];
-                  $useradm = get_config($line,'mikhmon<|<', "'");
-                  $passadm = get_config($line,'mikhmon>|>', "'");
-                  if ($s == "mikhmon") { ?>
+                  $useradm = get_config($line,'surf<|<', "'");
+                  $passadm = get_config($line,'surf>|>', "'");
+                  if ($s == "surf") { ?>
                   
                     <div class="row">
                       <div class="col-12">
@@ -501,7 +501,7 @@ if(!isMobile()){
                             $hn = get_config($line,$s.'%',"'");
                             $idleto = get_config($line,$s.'=', "'");
                             $i++;
-                            if ($s == "" || $s == "mikhmon") {
+                            if ($s == "" || $s == "surf") {
                             } else { ?>
 
                                 <tr>
