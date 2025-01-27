@@ -20,14 +20,14 @@ $API->debug = false;
 
 
 //$iphost = "192.168.6.1";
-$iphost = "sg-10.hostddns.us";
+$iphost = "sg-10.hostddns.us:18421";
 $userhost = "admin";
 $passwdhost = '12345678';
 $url = "http://204.13.232.131/";
 $port = 18421;
 
 
-$API->connect($iphost, $userhost, $passwdhost, $port);
+$API->connect($iphost, $userhost, $passwdhost);
 
 
 $env="sandbox";
