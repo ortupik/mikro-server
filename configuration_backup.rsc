@@ -1,4 +1,4 @@
-# jan/27/2025 18:33:15 by RouterOS 6.49.17
+# jan/28/2025 00:36:01 by RouterOS 6.49.17
 # software id = LEWM-GR0E
 #
 # model = 951Ui-2HnD
@@ -6,6 +6,10 @@
 /interface bridge
 add admin-mac=F4:1E:57:8B:BB:3A auto-mac=no comment=defconf name=bridge
 add name=bridge-hotspot
+/interface ovpn-client
+add add-default-route=yes comment=ovpn connect-to=sg-10.hostddns.us \
+    mac-address=FE:B7:C4:7F:05:CC name=ovpn-client password=12345678 user=\
+    admintest2@mytunnel.id
 /interface wireless
 set [ find default-name=wlan1 ] band=2ghz-b/g/n channel-width=20/40mhz-Ce \
     disabled=no distance=indoors frequency=auto installation=indoor mode=\
@@ -33,10 +37,6 @@ add address-pool=hotspot-pool addresses-per-mac=1 disabled=no interface=\
     bridge-hotspot name=hotspot1 profile=hsprof1
 /ip hotspot user profile
 add address-pool=hotspot-pool name=quick30 parent-queue=none rate-limit=5M/5M
-/interface ovpn-client
-add add-default-route=yes comment=ovpn connect-to=sg-10.hostddns.us \
-    mac-address=FE:B7:C4:7F:05:CC name=ovpn-client password=12345678 profile=\
-    default-encryption user=admintest2@mytunnel.id
 /tool user-manager customer
 set admin access=\
     own-routers,own-users,own-profiles,own-limits,config-payment-gw password=\
@@ -113,10 +113,6 @@ add action=accept chain=input dst-port=1194 protocol=tcp
 add action=accept chain=input dst-port=8728 protocol=tcp src-address=\
     0.0.0.0/0
 add action=accept chain=input in-interface=ovpn-client
-add action=accept chain=forward in-interface=bridge-hotspot out-interface=\
-    ovpn-client
-add action=accept chain=forward in-interface=ovpn-client out-interface=\
-    bridge-hotspot
 add action=accept chain=input dst-port=8728 protocol=tcp src-address=\
     10.10.224.105
 add action=accept chain=input dst-port=8728 protocol=tcp src-address=\
@@ -159,7 +155,7 @@ set api address=0.0.0.0/0
 /radius
 add address=127.0.0.1 secret=1234 service=hotspot
 /system clock
-set time-zone-name=Indian/Mauritius
+set time-zone-name=Asia/Singapore
 /system logging
 add action=disk prefix=-> topics=hotspot,info,debug
 add topics=ovpn,debug

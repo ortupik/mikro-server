@@ -35,12 +35,13 @@ if (isset($_POST['phone_number']) && isset($_POST["product_name"])) {
     );
 
     $packages = array(
-        array("id" => "quick30", "validity" => "30 Min", "amount" => 5),
-        array("id" => "hourly3", "validity" => "1 Hour", "amount" => 10),
-        array("id" => "halfday12", "validity" => "12 Hours", "amount" => 20),
-        array("id" => "oneday24", "validity" => "24 Hours", "amount" => 30),
+        array("id" => "quickHour", "validity" => "1 hour", "amount" => 10),
+        array("id" => "hourly3", "validity" => "3 Hours", "amount" => 20),
+        array("id" => "halfday12", "validity" => "12 Hours", "amount" => 50),
+        array("id" => "oneday24", "validity" => "24 Hours", "amount" => 70),
         array("id" => "weekly", "validity" => "1 Week", "amount" => 170),
-        array("id" => "monthly", "validity" => "1 Month", "amount" => 700),
+        array("id" => "monthlyHome", "validity" => "1 Month", "amount" => 700),
+        array("id" => "monthlyWifi", "validity" => "1 Month", "amount" => 700),
     );
 
 
@@ -64,7 +65,6 @@ if (isset($_POST['phone_number']) && isset($_POST["product_name"])) {
     $phone = (substr($phone, 0, 1) == "7") ? "254{$phone}" : $phone;
 
 
-
     $access_token = ($config['env']  == "live") ? "https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials" : "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"; 
     $credentials = base64_encode($config['key'] . ':' . $config['secret']); 
     
@@ -73,7 +73,11 @@ if (isset($_POST['phone_number']) && isset($_POST["product_name"])) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
     $response = curl_exec($ch);
     curl_close($ch);
-    $result = json_decode($response); 
+   
+
+    if($response){
+
+        $result = json_decode($response); 
     $token = isset($result->{'access_token'}) ? $result->{'access_token'} : "N/A";
 
     $timestamp = date("YmdHis");
@@ -93,6 +97,8 @@ if (isset($_POST['phone_number']) && isset($_POST["product_name"])) {
         "TransactionDesc" => $config['TransactionDesc'],
     ); 
 
+    
+
     $data_string = json_encode($curl_post_data);
 
     $endpoint = ($config['env'] == "live") ? "https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest" : "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"; 
@@ -107,6 +113,7 @@ if (isset($_POST['phone_number']) && isset($_POST["product_name"])) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $response     = curl_exec($ch);
     curl_close($ch);
+
 
     $result = json_decode(json_encode(json_decode($response)), true);
 
@@ -147,6 +154,9 @@ if (isset($_POST['phone_number']) && isset($_POST["product_name"])) {
             $errmsg .= $error . '<br />';
         }
     }
+}else{
+    echo "Could not communicate to Safaricom servers";
+}
     
 }else{
      $errmsg .= 'Missing Product Name or Phone Number';

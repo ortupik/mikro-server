@@ -1,6 +1,6 @@
 <?php
-  session_start();
-  include('status_query.php');
+session_start();
+include('status_query.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,8 +99,8 @@ font-size:16px; }
    <body>
    <div class="container">
     <form action='' method='POST'>
-    <div class="price">
-        <h1>Payment  -  Ksh <?php echo $_SESSION['price'].' package for '. $_SESSION["validity"] ; ?></h1>
+    <div class="price" style="text-align:center;">
+        <h1> Pay Ksh <?php echo $_SESSION['price'].' for '. $_SESSION["validity"] ; ?> Internet</h1>
         <h3 style="color:red; text-align:center;"><?php echo $msg; ?></h3>
     </div>
     <div class="card__container">

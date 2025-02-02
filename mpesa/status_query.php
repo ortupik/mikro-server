@@ -19,8 +19,8 @@ $API = new RouterosAPI();
 $API->debug = false;
 
 
-//$iphost = "192.168.6.1";
-$iphost = "sg-10.hostddns.us:18421";
+$iphost = "192.168.6.1";
+//$iphost = "sg-10.hostddns.us:18421";
 $userhost = "admin";
 $passwdhost = '12345678';
 $url = "http://204.13.232.131/";
@@ -38,11 +38,16 @@ $initiatorName = "testapi";
 $initiatorPassword = "Safaricom999!*!";
 $passKey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
 $msg = '';
+$username = '';
 
 if (isset($_POST['phone_number']) && isset($_SESSION["product_name"])) {
 
     $profile = $_SESSION["product_name"];
     $phoneNumber = $_POST["phone_number"];
+
+    if(isset($_POST['username']) && !empty($_POST['username'])){
+        $username = $_POST['username'];
+    }
     
     $access_token = ($env == "live") ? "https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials" : "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"; 
     $credentials = base64_encode($key . ':' . $secret); 
@@ -91,23 +96,32 @@ if (isset($_POST['phone_number']) && isset($_SESSION["product_name"])) {
         
     $ResultCode = $result->{'ResultCode'};
 
-   /* $status = ($ResultCode != 0) ? 'CANCELLED' : 'SUCCESS';
+    $status = ($ResultCode != 0) ? 'CANCELLED' : 'SUCCESS';
     $updateSql = "UPDATE `orders` SET `Status` = ? WHERE `CheckoutRequestID` = ?";
     $updateStmt = $conn->prepare($updateSql);
     $updateStmt->bind_param("si", $ResultCode, $checkoutRequestId);
-    $updateStmt->execute();*/
+    $updateStmt->execute();
 
     if($ResultCode === "0"){
         $msg .= "Payment Successful!";
         $server = "hotspot1";
+        $name = '';
+        $password = '';
+        
+        if(!empty($username)){
+            $name = $username;
+            $password = $username;  
+        }else{
             $name = generateRandomString();
             $password = $name;
-            $disabled = false;
-            $timelimit = '30m';
-            $comment = $timelimit;
-            $chkvalid = false;
-            $mbgb = '';
-            $usermode = "vc-";
+        }
+        
+        $disabled = false;
+        $timelimit = '30m';
+        $comment = $timelimit;
+        $chkvalid = false;
+        $mbgb = '';
+        $usermode = "vc-";
 
            $response = $API->comm("/ip/hotspot/user/add", array(
             "server" => "$server",

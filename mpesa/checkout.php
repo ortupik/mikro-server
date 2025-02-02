@@ -173,14 +173,14 @@
        
        <form name="checkout" action='<?php echo $_SERVER['PHP_SELF'] ?>' method='POST'>
             <div class="price">
-                <h1>surf Hotspot - Payment</h1>
+                <h1>Surf Hotspot - Payment</h1>
                 <div class="order-summary">
                     <div class="order-item">
                         <img src="vc.png" class="order-item-image" alt="Bronze Plan">
                         <div class="order-item-details">
                             <h3>WiFi Hotspot Plan</h3>
                             <div id="validity">- Validity Period: </div>
-                            <div>- 1 Access User</div>
+                            <div id="max_device">- 1 Device</div>
                             <div>- Unlimited Without Quota</div>
                         </div>
                         <div id="price" class="order-item-price"></div>
@@ -217,18 +217,23 @@
          document.checkout.product_name.value = productName;
          
          const packages = [
-            { id: "quick30", validity: "30 Min", amount: 5 },
-            { id: "hourly3", validity: "1 Hour", amount: 10 },
-            { id: "halfday12", validity: "12 Hours", amount: 20 },
-            { id: "oneday24", validity: "24 Hours", amount: 30 },
+            { id: "quickHour", validity: "1 hour", amount: 10 },
+            { id: "hourly3", validity: "3 Hours", amount: 30 },
+            { id: "halfday12", validity: "12 Hours", amount: 50 },
+            { id: "oneday24", validity: "24 Hours", amount: 70 },
             { id: "weekly", validity: "1 Week", amount: 170 },
-            { id: "monthly", validity: "1 Month", amount: 700 },
+            { id: "monthlyWifi", validity: "1 Month", amount: 700 },
+            { id: "monthlyHome", validity: "1 Month", amount: 700 },
         ];
 
         var validity = packages.filter(package => package.id == productName).map(p => "- Valid for "+ p.validity);
         var price = packages.filter(package => package.id == productName).map(p => "Ksh "+ p.amount);;
         document.getElementById("price").innerHTML = price;
         document.getElementById("validity").innerHTML = validity;
+
+        if(productName == "monthlyHome"){
+            document.getElementById("max_device").innerHTML = "- 5 Devices";
+        }
 
      </script>
 </body>
